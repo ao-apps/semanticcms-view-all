@@ -63,7 +63,12 @@ public class AllView extends View {
 	}
 
 	@Override
-	public String getTitle(Page page) {
+	public String getTitle(
+		ServletContext servletContext,
+		HttpServletRequest request,
+		HttpServletResponse response,
+		Page page
+	) {
 		return "View All" + TITLE_SEPARATOR + page.getTitle() + TITLE_SEPARATOR + page.getPageRef().getBook().getTitle();
 	}
 

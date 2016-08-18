@@ -28,7 +28,6 @@ import com.semanticcms.core.servlet.PageUtils;
 import com.semanticcms.core.servlet.View;
 import java.io.IOException;
 import java.util.Collections;
-import java.util.List;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -76,11 +75,6 @@ public class AllView extends View {
 	@Override
 	public String getKeywords(Page page) {
 		return null;
-	}
-
-	@Override
-	public List<String> getCssLinks() {
-		return Collections.singletonList("/styles/toc.css");
 	}
 
 	/**

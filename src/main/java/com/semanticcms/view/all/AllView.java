@@ -24,6 +24,7 @@ package com.semanticcms.view.all;
 
 import com.aoindustries.servlet.http.Dispatcher;
 import com.semanticcms.core.model.Page;
+import com.semanticcms.core.servlet.PageUtils;
 import com.semanticcms.core.servlet.View;
 import java.io.IOException;
 import java.util.Collections;
@@ -54,7 +55,7 @@ public class AllView extends View {
 
 	@Override
 	public String getDisplay() {
-		return "All";
+		return "View All";
 	}
 
 	@Override
@@ -63,13 +64,8 @@ public class AllView extends View {
 	}
 
 	@Override
-	public String getTitle(
-		ServletContext servletContext,
-		HttpServletRequest request,
-		HttpServletResponse response,
-		Page page
-	) {
-		return "View All" + TITLE_SEPARATOR + page.getTitle() + TITLE_SEPARATOR + page.getPageRef().getBook().getTitle();
+	public boolean isApplicable(ServletContext servletContext, HttpServletRequest request, HttpServletResponse response, Page page) throws ServletException, IOException {
+		return PageUtils.hasChild(page);
 	}
 
 	@Override

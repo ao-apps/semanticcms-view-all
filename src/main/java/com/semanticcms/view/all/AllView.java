@@ -50,7 +50,7 @@ public class AllView extends View {
 
 	@Override
 	public Group getGroup() {
-		return Group.VARIABLE;
+		return Group.FIXED;
 	}
 
 	@Override

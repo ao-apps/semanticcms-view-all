@@ -47,6 +47,6 @@ Arguments:
 		<p:navigationTree root="${rootPage}" />
 	</nav>
 	<c:forEach var="indexedPage" items="${pageIndex.pageList}">
-		<ao:include page="/semanticcms-view-content/view.inc.jspx" arg.page="${p:capturePageInBook(indexedPage.pageRef.book, indexedPage.pageRef.path, 'body')}" />
+		<ao:include page="/semanticcms-core-view-content/view.inc.jspx" arg.page="${p:capturePageInBook(indexedPage.pageRef.book, indexedPage.pageRef.path, 'body')}" />
 	</c:forEach>
 </jsp:root>

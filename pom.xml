@@ -85,8 +85,8 @@ along with semanticcms-view-all.  If not, see <http://www.gnu.org/licenses />.
 		</dependency>
 		<dependency>
 			<groupId>com.semanticcms</groupId>
-			<artifactId>semanticcms-view-content</artifactId>
-			<version>1.0</version>
+			<artifactId>semanticcms-core-view-content</artifactId>
+			<version>1.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 </project>

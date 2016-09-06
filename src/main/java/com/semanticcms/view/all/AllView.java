@@ -81,7 +81,7 @@ public class AllView extends View {
 	 * No search index "all" view to avoid duplicate content penalties.
 	 */
 	@Override
-	public boolean getAllowRobots(Page page) {
+	public boolean getAllowRobots(ServletContext servletContext, HttpServletRequest request, HttpServletResponse response, Page page) {
 		return false;
 	}
 

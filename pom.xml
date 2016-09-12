@@ -38,6 +38,7 @@ along with semanticcms-view-all.  If not, see <http://www.gnu.org/licenses />.
 	<name>SemanticCMS View All</name>
 	<url>https://semanticcms.com/view-all/</url>
 	<description>SemanticCMS view of all content of the current page and all child pages.</description>
+	<inceptionYear>2013</inceptionYear>
 
 	<scm>
 		<connection>scm:git:git://github.com/aoindustries/semanticcms-view-all.git</connection>

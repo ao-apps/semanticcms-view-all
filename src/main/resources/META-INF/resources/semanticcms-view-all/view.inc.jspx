@@ -47,6 +47,9 @@ Arguments:
 		<core:navigationTree root="${rootPage}" />
 	</nav>
 	<c:forEach var="indexedPage" items="${pageIndex.pageList}">
+		<!-- TODO: Concurrency: Is limited concurrent capture possible here?
+		           If concurrency at 16, for example, could we reasonably dispatch concurrent capturePageInBook
+		           while serializing to view.inc.jspx on the main thread? -->
 		<ao:include page="/semanticcms-core-view-content/view.inc.jspx" arg.page="${core:capturePageInBook(indexedPage.pageRef.book, indexedPage.pageRef.path, 'body')}" />
 	</c:forEach>
 </jsp:root>

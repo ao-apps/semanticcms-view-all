@@ -44,7 +44,7 @@ Arguments:
 	<!--</header>-->
 	<nav>
 		<h2>Table of Contents</h2>
-		<core:navigationTree root="${rootPage}" />
+		<core:navigationTree root="#{rootPage}" />
 	</nav>
 	<c:forEach var="indexedPage" items="${pageIndex.pageList}">
 		<!-- TODO: Concurrency: Is limited concurrent capture possible here?

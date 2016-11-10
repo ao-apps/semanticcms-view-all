@@ -36,13 +36,12 @@ along with semanticcms-view-all.  If not, see <http://www.gnu.org/licenses />.
 	<packaging>jar</packaging>
 
 	<properties>
-		<bookPath>/view-all</bookPath>
 		<shortTitle>View All</shortTitle>
 		<description.html><![CDATA[<a target="_top" href="https://semanticcms.com/">SemanticCMS</a> view of all content of the current page and all child pages.]]></description.html>
 	</properties>
 
 	<name>SemanticCMS View All</name>
-	<url>https://semanticcms.com${bookPath}/</url><!-- Can't inherit due to multi-module -->
+	<url>https://semanticcms.com/view-all/</url>
 	<description>SemanticCMS view of all content of the current page and all child pages.</description>
 	<inceptionYear>2013</inceptionYear>
 

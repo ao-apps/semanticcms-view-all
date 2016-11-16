@@ -33,7 +33,7 @@ along with semanticcms-view-all.  If not, see <http://www.gnu.org/licenses />.
 
 	<groupId>com.semanticcms</groupId>
 	<artifactId>semanticcms-view-all</artifactId>
-	<version>1.4.2-SNAPSHOT</version>
+	<version>1.4.2</version>
 	<packaging>jar</packaging>
 
 	<properties>
@@ -51,7 +51,7 @@ along with semanticcms-view-all.  If not, see <http://www.gnu.org/licenses />.
 		<connection>scm:git:git://github.com/aoindustries/${project.artifactId}.git</connection>
 		<developerConnection>scm:git:git@github.com:aoindustries/${project.artifactId}.git</developerConnection>
 		<url>https://github.com/aoindustries/${project.artifactId}</url>
-		<tag>HEAD</tag>
+		<tag>semanticcms-view-all-1.4.2</tag>
 	</scm>
 
 	<profiles>

@@ -72,7 +72,7 @@ along with semanticcms-view-all.  If not, see <http://www.gnu.org/licenses />.
 									<link>https://semanticcms.com/core/model/apidocs/</link>
 									<link>https://semanticcms.com/core/servlet/apidocs/</link>
 									<link>https://semanticcms.com/core/taglib/apidocs/</link>
-									<link>https://semanticcms.com/core/view-contents/apidocs/</link>
+									<link>https://semanticcms.com/core/view-content/apidocs/</link>
 								</links>
 							</configuration>
 						</plugin>

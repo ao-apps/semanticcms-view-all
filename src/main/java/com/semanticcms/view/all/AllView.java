@@ -64,7 +64,7 @@ public class AllView extends View {
 
 	@Override
 	public boolean isApplicable(ServletContext servletContext, HttpServletRequest request, HttpServletResponse response, Page page) throws ServletException, IOException {
-		return PageUtils.hasChild(page);
+		return PageUtils.hasChild(servletContext, page);
 	}
 
 	@Override

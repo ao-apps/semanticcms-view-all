@@ -1,6 +1,6 @@
 /*
  * semanticcms-view-all - SemanticCMS view of all content of the current page and all child pages.
- * Copyright (C) 2016  AO Industries, Inc.
+ * Copyright (C) 2016, 2017  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -23,9 +23,9 @@
 package com.semanticcms.view.all;
 
 import com.aoindustries.servlet.http.Dispatcher;
+import com.semanticcms.core.controller.PageUtils;
 import com.semanticcms.core.model.Page;
-import com.semanticcms.core.servlet.PageUtils;
-import com.semanticcms.core.servlet.View;
+import com.semanticcms.core.renderer.html.View;
 import java.io.IOException;
 import java.util.Collections;
 import javax.servlet.ServletContext;

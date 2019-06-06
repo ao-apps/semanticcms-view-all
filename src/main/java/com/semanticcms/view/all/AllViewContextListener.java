@@ -1,6 +1,6 @@
 /*
  * semanticcms-view-all - SemanticCMS view of all content of the current page and all child pages.
- * Copyright (C) 2016  AO Industries, Inc.
+ * Copyright (C) 2016, 2017  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695

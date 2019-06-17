@@ -1,6 +1,6 @@
 /*
  * semanticcms-view-all - SemanticCMS view of all content of the current page and all child pages.
- * Copyright (C) 2016, 2017  AO Industries, Inc.
+ * Copyright (C) 2016, 2017, 2019  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -32,7 +32,9 @@ public class AllViewContextListener implements ServletContextListener {
 
 	@Override
 	public void contextInitialized(ServletContextEvent event) {
-		SemanticCMS.getInstance(event.getServletContext()).addView(new AllView());
+		SemanticCMS semanticCMS = SemanticCMS.getInstance(event.getServletContext());
+		semanticCMS.addView(new AllView());
+		semanticCMS.addPrintCssLink("/semanticcms-view-all/styles-print.css");
 	}
 
 	@Override

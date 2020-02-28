@@ -58,7 +58,7 @@ public class AllView extends View {
 		public void contextInitialized(ServletContextEvent event) {
 			HtmlRenderer htmlRenderer = HtmlRenderer.getInstance(event.getServletContext());
 			htmlRenderer.addView(new AllView());
-			htmlRenderer.addPrintCssLink("/semanticcms-view-all/styles-print.css");
+			htmlRenderer.addPrintCssLink("/semanticcms-view-all/semanticcms-view-all-print.css");
 		}
 		@Override
 		public void contextDestroyed(ServletContextEvent event) {

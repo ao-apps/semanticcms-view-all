@@ -24,6 +24,8 @@ package com.semanticcms.view.all;
 
 import com.aoindustries.html.Html;
 import com.aoindustries.servlet.http.Dispatcher;
+import com.aoindustries.web.resources.registry.Style;
+import com.aoindustries.web.resources.servlet.RegistryEE;
 import com.semanticcms.core.model.Page;
 import com.semanticcms.core.servlet.PageUtils;
 import com.semanticcms.core.servlet.SemanticCMS;
@@ -50,15 +52,25 @@ public class AllView extends View {
 
 	public static final String NAME = "all";
 
+	public static final Style SEMANTICCMS_VIEW_ALL_PRINT = Style.builder()
+		.uri("/semanticcms-autogit-style/semanticcms-autogit.css")
+		.media("print")
+		.build();
+
 	private static final String JSPX_TARGET = "/semanticcms-view-all/view.inc.jspx";
 
-	@WebListener("Registers the \"" + NAME + "\" view in SemanticCMS.")
+	@WebListener("Registers the \"" + NAME + "\" view in RegistryEE and SemanticCMS.")
 	public static class Initializer implements ServletContextListener {
 		@Override
 		public void contextInitialized(ServletContextEvent event) {
-			SemanticCMS semanticCMS = SemanticCMS.getInstance(event.getServletContext());
-			semanticCMS.addView(new AllView());
-			semanticCMS.addPrintCssLink("/semanticcms-view-all/semanticcms-view-all-print.css");
+			ServletContext servletContext = event.getServletContext();
+
+			// TODO: Only add this style to the all view
+			// Add our CSS file
+			RegistryEE.get(servletContext).global.styles.add(SEMANTICCMS_VIEW_ALL_PRINT);
+
+			// Add this view
+			SemanticCMS.getInstance(servletContext).addView(new AllView());
 		}
 		@Override
 		public void contextDestroyed(ServletContextEvent event) {

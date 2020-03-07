@@ -24,11 +24,13 @@ package com.semanticcms.view.all;
 
 import com.aoindustries.html.Html;
 import com.aoindustries.servlet.http.Dispatcher;
+import com.aoindustries.web.resources.registry.Registry;
 import com.aoindustries.web.resources.registry.Style;
 import com.aoindustries.web.resources.servlet.RegistryEE;
 import com.semanticcms.core.model.Page;
 import com.semanticcms.core.servlet.PageUtils;
 import com.semanticcms.core.servlet.SemanticCMS;
+import com.semanticcms.core.servlet.Theme;
 import com.semanticcms.core.servlet.View;
 import java.io.IOException;
 import java.util.Collections;
@@ -52,8 +54,11 @@ public class AllView extends View {
 
 	public static final String NAME = "all";
 
+	public static final com.aoindustries.web.resources.registry.Group.Name RESOURCE_GROUP = new com.aoindustries.web.resources.registry.Group.Name("semanticcms-view-all");
+
+	// TODO: Change to Group.Name once we have group-level ordering
 	public static final Style SEMANTICCMS_VIEW_ALL_PRINT = Style.builder()
-		.uri("/semanticcms-autogit-style/semanticcms-autogit.css")
+		.uri("/semanticcms-view-all/semanticcms-view-all-print.css")
 		.media("print")
 		.build();
 
@@ -65,9 +70,11 @@ public class AllView extends View {
 		public void contextInitialized(ServletContextEvent event) {
 			ServletContext servletContext = event.getServletContext();
 
-			// TODO: Only add this style to the all view
 			// Add our CSS file
-			RegistryEE.get(servletContext).global.styles.add(SEMANTICCMS_VIEW_ALL_PRINT);
+			RegistryEE.Application.get(servletContext)
+				.getGroup(RESOURCE_GROUP)
+				.styles
+				.add(SEMANTICCMS_VIEW_ALL_PRINT);
 
 			// Add this view
 			SemanticCMS.getInstance(servletContext).addView(new AllView());
@@ -116,6 +123,13 @@ public class AllView extends View {
 	@Override
 	public boolean getAllowRobots(ServletContext servletContext, HttpServletRequest request, HttpServletResponse response, Page page) {
 		return false;
+	}
+
+	@Override
+	public void configureResources(ServletContext servletContext, HttpServletRequest req, HttpServletResponse resp, Theme theme, Page page, Registry requestRegistry) {
+		super.configureResources(servletContext, req, resp, theme, page, requestRegistry);
+		requestRegistry.activate(RESOURCE_GROUP);
+		// TODO: Add and activate all the page-scope registries from all pages that will be written
 	}
 
 	@Override

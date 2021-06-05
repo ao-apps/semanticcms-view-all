@@ -22,11 +22,11 @@
  */
 package com.semanticcms.view.all;
 
-import com.aoindustries.html.servlet.FlowContent;
-import com.aoindustries.servlet.http.Dispatcher;
-import com.aoindustries.web.resources.registry.Registry;
-import com.aoindustries.web.resources.registry.Style;
-import com.aoindustries.web.resources.servlet.RegistryEE;
+import com.aoapps.html.servlet.FlowContent;
+import com.aoapps.servlet.http.Dispatcher;
+import com.aoapps.web.resources.registry.Registry;
+import com.aoapps.web.resources.registry.Style;
+import com.aoapps.web.resources.servlet.RegistryEE;
 import com.semanticcms.core.controller.PageUtils;
 import com.semanticcms.core.model.Page;
 import com.semanticcms.core.renderer.html.HtmlRenderer;
@@ -54,7 +54,7 @@ public class AllView extends View {
 
 	public static final String NAME = "all";
 
-	public static final com.aoindustries.web.resources.registry.Group.Name RESOURCE_GROUP = new com.aoindustries.web.resources.registry.Group.Name("semanticcms-view-all");
+	public static final com.aoapps.web.resources.registry.Group.Name RESOURCE_GROUP = new com.aoapps.web.resources.registry.Group.Name("semanticcms-view-all");
 
 	// TODO: Change to Group.Name once we have group-level ordering
 	public static final Style SEMANTICCMS_VIEW_ALL_PRINT = Style.builder()

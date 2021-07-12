@@ -8,6 +8,8 @@
 [![semantic versioning: 2.0.0](https://semanticcms.com/ao-badges/semver-2.0.0.svg)](http://semver.org/spec/v2.0.0.html)
 [![license: LGPL v3](https://semanticcms.com/ao-badges/license-lgpl-3.0.svg)](https://www.gnu.org/licenses/lgpl-3.0)
 
+[![Build](https://github.com/aoindustries/semanticcms-view-all/workflows/Build/badge.svg?branch=master)](https://github.com/aoindustries/semanticcms-view-all/actions?query=workflow%3ABuild)
+
 [SemanticCMS view of all content](https://github.com/aoindustries/semanticcms-view-all) of the current page and all child pages.
 
 ## Project Links

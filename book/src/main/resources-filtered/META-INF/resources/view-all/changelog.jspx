@@ -242,7 +242,7 @@ along with semanticcms-view-all.  If not, see <http://www.gnu.org/licenses />.
 		>
 			<ul>
 				<li>Project moved to GitHub and Maven.</li>
-				<li><![CDATA[Passing args as Map&lt;String,?&gt; instead of forcing Map&lt;String,Object&gt;]]></li>
+				<li>Passing args as <code><![CDATA[Map&lt;String, ?&gt;]]></code> instead of forcing <code><![CDATA[Map&lt;String, Object&gt;]]></code></li>
 				<li>Views can now hide themselves when not relevant to a given page.</li>
 				<li>CSS links may now be registered for global use.</li>
 			</ul>

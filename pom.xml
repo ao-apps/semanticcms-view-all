@@ -39,7 +39,7 @@ along with semanticcms-view-all.  If not, see <http://www.gnu.org/licenses />.
 		<description.html><![CDATA[<a target="${javadoc.target}" href="https://semanticcms.com/">SemanticCMS</a> view of all content of the current page and all child pages.]]></description.html>
 		<!-- SonarQube -->
 		<sonar.projectKey>${project.groupId}:${project.artifactId}</sonar.projectKey>
-		<sonar.organization>aoindustries</sonar.organization>
+		<sonar.organization>ao-apps</sonar.organization>
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 		<!-- TODO: Implement tests -->
 		<sonar.coverage.exclusions>**.*</sonar.coverage.exclusions>
@@ -74,20 +74,20 @@ along with semanticcms-view-all.  If not, see <http://www.gnu.org/licenses />.
 	</developers>
 
 	<scm>
-		<connection>scm:git:git://github.com/aoindustries/semanticcms-view-all.git</connection>
-		<developerConnection>scm:git:git@github.com:aoindustries/semanticcms-view-all.git</developerConnection>
-		<url>https://github.com/aoindustries/semanticcms-view-all</url>
+		<connection>scm:git:git://github.com/ao-apps/semanticcms-view-all.git</connection>
+		<developerConnection>scm:git:git@github.com:ao-apps/semanticcms-view-all.git</developerConnection>
+		<url>https://github.com/ao-apps/semanticcms-view-all</url>
 		<tag>HEAD</tag>
 	</scm>
 
 	<issueManagement>
 		<system>GitHub Issues</system>
-		<url>https://github.com/aoindustries/semanticcms-view-all/issues</url>
+		<url>https://github.com/ao-apps/semanticcms-view-all/issues</url>
 	</issueManagement>
 
 	<ciManagement>
 		<system>GitHub Actions</system>
-		<url>https://github.com/aoindustries/semanticcms-view-all/actions</url>
+		<url>https://github.com/ao-apps/semanticcms-view-all/actions</url>
 	</ciManagement>
 
 	<repositories>

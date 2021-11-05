@@ -50,7 +50,7 @@ import javax.servlet.jsp.SkipPageException;
  *
  * TODO: Any use of description/keywords per article below?
  */
-public class AllView extends View {
+public final class AllView extends View {
 
 	public static final String NAME = "all";
 
@@ -85,7 +85,9 @@ public class AllView extends View {
 		}
 	}
 
-	private AllView() {}
+	private AllView() {
+		// Do nothing
+	}
 
 	@Override
 	public Group getGroup() {

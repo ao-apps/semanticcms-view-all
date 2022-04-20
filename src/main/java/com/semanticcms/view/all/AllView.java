@@ -53,96 +53,96 @@ import javax.servlet.jsp.SkipPageException;
  */
 public final class AllView extends View {
 
-	public static final String NAME = "all";
+  public static final String NAME = "all";
 
-	public static final com.aoapps.web.resources.registry.Group.Name RESOURCE_GROUP = new com.aoapps.web.resources.registry.Group.Name("semanticcms-view-all");
+  public static final com.aoapps.web.resources.registry.Group.Name RESOURCE_GROUP = new com.aoapps.web.resources.registry.Group.Name("semanticcms-view-all");
 
-	// TODO: Change to Group.Name once we have group-level ordering
-	public static final Style SEMANTICCMS_VIEW_ALL_PRINT = Style.builder()
-		.uri("/semanticcms-view-all/semanticcms-view-all-print.css")
-		.media("print")
-		.build();
+  // TODO: Change to Group.Name once we have group-level ordering
+  public static final Style SEMANTICCMS_VIEW_ALL_PRINT = Style.builder()
+    .uri("/semanticcms-view-all/semanticcms-view-all-print.css")
+    .media("print")
+    .build();
 
-	private static final String JSPX_TARGET = "/semanticcms-view-all/view.inc.jspx";
+  private static final String JSPX_TARGET = "/semanticcms-view-all/view.inc.jspx";
 
-	@WebListener("Registers the \"" + NAME + "\" view in RegistryEE and SemanticCMS.")
-	public static class Initializer implements ServletContextListener {
-		@Override
-		public void contextInitialized(ServletContextEvent event) {
-			ServletContext servletContext = event.getServletContext();
+  @WebListener("Registers the \"" + NAME + "\" view in RegistryEE and SemanticCMS.")
+  public static class Initializer implements ServletContextListener {
+    @Override
+    public void contextInitialized(ServletContextEvent event) {
+      ServletContext servletContext = event.getServletContext();
 
-			// Add our CSS file
-			RegistryEE.Application.get(servletContext)
-				.getGroup(RESOURCE_GROUP)
-				.styles
-				.add(SEMANTICCMS_VIEW_ALL_PRINT);
+      // Add our CSS file
+      RegistryEE.Application.get(servletContext)
+        .getGroup(RESOURCE_GROUP)
+        .styles
+        .add(SEMANTICCMS_VIEW_ALL_PRINT);
 
-			// Add this view
-			SemanticCMS.getInstance(servletContext).addView(new AllView());
-		}
-		@Override
-		public void contextDestroyed(ServletContextEvent event) {
-			// Do nothing
-		}
-	}
+      // Add this view
+      SemanticCMS.getInstance(servletContext).addView(new AllView());
+    }
+    @Override
+    public void contextDestroyed(ServletContextEvent event) {
+      // Do nothing
+    }
+  }
 
-	private AllView() {
-		// Do nothing
-	}
+  private AllView() {
+    // Do nothing
+  }
 
-	@Override
-	public Group getGroup() {
-		return Group.FIXED;
-	}
+  @Override
+  public Group getGroup() {
+    return Group.FIXED;
+  }
 
-	@Override
-	public String getDisplay() {
-		return "View All";
-	}
+  @Override
+  public String getDisplay() {
+    return "View All";
+  }
 
-	@Override
-	public String getName() {
-		return NAME;
-	}
+  @Override
+  public String getName() {
+    return NAME;
+  }
 
-	@Override
-	public boolean isApplicable(ServletContext servletContext, HttpServletRequest request, HttpServletResponse response, Page page) throws ServletException, IOException {
-		return PageUtils.hasChild(page);
-	}
+  @Override
+  public boolean isApplicable(ServletContext servletContext, HttpServletRequest request, HttpServletResponse response, Page page) throws ServletException, IOException {
+    return PageUtils.hasChild(page);
+  }
 
-	@Override
-	public String getDescription(Page page) {
-		return null;
-	}
+  @Override
+  public String getDescription(Page page) {
+    return null;
+  }
 
-	@Override
-	public String getKeywords(Page page) {
-		return null;
-	}
+  @Override
+  public String getKeywords(Page page) {
+    return null;
+  }
 
-	/**
-	 * No search index "all" view to avoid duplicate content penalties.
-	 */
-	@Override
-	public boolean getAllowRobots(ServletContext servletContext, HttpServletRequest request, HttpServletResponse response, Page page) {
-		return false;
-	}
+  /**
+   * No search index "all" view to avoid duplicate content penalties.
+   */
+  @Override
+  public boolean getAllowRobots(ServletContext servletContext, HttpServletRequest request, HttpServletResponse response, Page page) {
+    return false;
+  }
 
-	@Override
-	public void configureResources(ServletContext servletContext, HttpServletRequest req, HttpServletResponse resp, Theme theme, Page page, Registry requestRegistry) {
-		super.configureResources(servletContext, req, resp, theme, page, requestRegistry);
-		requestRegistry.activate(RESOURCE_GROUP);
-		// TODO: Add and activate all the page-scope registries from all pages that will be written
-	}
+  @Override
+  public void configureResources(ServletContext servletContext, HttpServletRequest req, HttpServletResponse resp, Theme theme, Page page, Registry requestRegistry) {
+    super.configureResources(servletContext, req, resp, theme, page, requestRegistry);
+    requestRegistry.activate(RESOURCE_GROUP);
+    // TODO: Add and activate all the page-scope registries from all pages that will be written
+  }
 
-	@Override
-	public <__ extends FlowContent<__>> void doView(ServletContext servletContext, HttpServletRequest request, HttpServletResponse response, __ flow, Page page) throws ServletException, IOException, SkipPageException {
-		Dispatcher.include(
-			servletContext,
-			JSPX_TARGET,
-			request,
-			response,
-			Collections.singletonMap("page", page)
-		);
-	}
+  @Override
+  public <__ extends FlowContent<__>> void doView(ServletContext servletContext, HttpServletRequest request, HttpServletResponse response, __ flow, Page page) throws ServletException, IOException, SkipPageException {
+    Dispatcher.include(
+      servletContext,
+      JSPX_TARGET,
+      request,
+      response,
+      Collections.singletonMap("page", page)
+    );
+  }
 }

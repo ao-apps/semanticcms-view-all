@@ -1,6 +1,6 @@
 /*
  * semanticcms-view-all - SemanticCMS view of all content of the current page and all child pages.
- * Copyright (C) 2019  AO Industries, Inc.
+ * Copyright (C) 2019, 2022  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -22,6 +22,6 @@
  */
 
 h1.semanticcms-view-all-title {
-	/* Uncomment the following to have each page on a separate piece of paper */
-	/*page-break-before: always;*/
+  /* Uncomment the following to have each page on a separate piece of paper */
+  /*page-break-before: always;*/
 }

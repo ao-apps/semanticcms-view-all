@@ -59,9 +59,9 @@ public final class AllView extends View {
 
   // TODO: Change to Group.Name once we have group-level ordering
   public static final Style SEMANTICCMS_VIEW_ALL_PRINT = Style.builder()
-    .uri("/semanticcms-view-all/semanticcms-view-all-print.css")
-    .media("print")
-    .build();
+      .uri("/semanticcms-view-all/semanticcms-view-all-print.css")
+      .media("print")
+      .build();
 
   private static final String JSPX_TARGET = "/semanticcms-view-all/view.inc.jspx";
 
@@ -73,13 +73,14 @@ public final class AllView extends View {
 
       // Add our CSS file
       RegistryEE.Application.get(servletContext)
-        .getGroup(RESOURCE_GROUP)
-        .styles
-        .add(SEMANTICCMS_VIEW_ALL_PRINT);
+          .getGroup(RESOURCE_GROUP)
+          .styles
+          .add(SEMANTICCMS_VIEW_ALL_PRINT);
 
       // Add this view
       SemanticCMS.getInstance(servletContext).addView(new AllView());
     }
+
     @Override
     public void contextDestroyed(ServletContextEvent event) {
       // Do nothing
@@ -138,11 +139,11 @@ public final class AllView extends View {
   @Override
   public <__ extends FlowContent<__>> void doView(ServletContext servletContext, HttpServletRequest request, HttpServletResponse response, __ flow, Page page) throws ServletException, IOException, SkipPageException {
     Dispatcher.include(
-      servletContext,
-      JSPX_TARGET,
-      request,
-      response,
-      Collections.singletonMap("page", page)
+        servletContext,
+        JSPX_TARGET,
+        request,
+        response,
+        Collections.singletonMap("page", page)
     );
   }
 }

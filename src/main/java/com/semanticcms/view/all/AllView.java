@@ -46,10 +46,12 @@ import javax.servlet.jsp.SkipPageException;
 
 /**
  * The view of all content of the current page and all child pages.
- *
+ * <p>
  * TODO: Authorship and copyright in view-all, or author specified per article, or author in article when doesn't match overall page?
- *
+ * </p>
+ * <p>
  * TODO: Any use of description/keywords per article below?
+ * </p>
  */
 public final class AllView extends View {
 
@@ -65,6 +67,9 @@ public final class AllView extends View {
 
   private static final String JSPX_TARGET = "/semanticcms-view-all/view.inc.jspx";
 
+  /**
+   * Registers the "{@link #NAME}" view in {@link RegistryEE} and {@link SemanticCMS}.
+   */
   @WebListener("Registers the \"" + NAME + "\" view in RegistryEE and SemanticCMS.")
   public static class Initializer implements ServletContextListener {
     @Override
@@ -74,8 +79,8 @@ public final class AllView extends View {
       // Add our CSS file
       RegistryEE.Application.get(servletContext)
           .getGroup(RESOURCE_GROUP)
-          .styles
-          .add(SEMANTICCMS_VIEW_ALL_PRINT);
+              .styles
+              .add(SEMANTICCMS_VIEW_ALL_PRINT);
 
       // Add this view
       SemanticCMS.getInstance(servletContext).addView(new AllView());
@@ -137,7 +142,8 @@ public final class AllView extends View {
   }
 
   @Override
-  public <__ extends FlowContent<__>> void doView(ServletContext servletContext, HttpServletRequest request, HttpServletResponse response, __ flow, Page page) throws ServletException, IOException, SkipPageException {
+  public <__ extends FlowContent<__>> void doView(ServletContext servletContext, HttpServletRequest request, HttpServletResponse response, __ flow, Page page)
+      throws ServletException, IOException, SkipPageException {
     Dispatcher.include(
         servletContext,
         JSPX_TARGET,

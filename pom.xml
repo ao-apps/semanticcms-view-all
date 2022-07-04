@@ -45,7 +45,7 @@ along with semanticcms-view-all.  If not, see <https://www.gnu.org/licenses/>.
     <sonar.coverage.exclusions>**.*</sonar.coverage.exclusions>
   </properties>
 
-  <name>SemanticCMS View All²</name>
+  <name>SemanticCMS View All</name>
   <url>https://semanticcms.com/view-all/</url>
   <description>SemanticCMS view of all content of the current page and all child pages.</description>
   <inceptionYear>2013</inceptionYear>

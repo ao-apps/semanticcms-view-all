@@ -38,6 +38,7 @@ along with semanticcms-view-all.  If not, see <https://www.gnu.org/licenses/>.
     <module.name>com.semanticcms.view.all</module.name>
     <javadoc.breadcrumbs><![CDATA[<a target="${javadoc.target}" href="https://semanticcms.com/">SemanticCMS</a>
 / <a target="${javadoc.target}" href="${project.url}">View All</a>]]></javadoc.breadcrumbs>
+        
     <description.html><![CDATA[<a target="${javadoc.target}" href="https://semanticcms.com/">SemanticCMS</a> view of all content of the current page and all child pages.]]></description.html>
     <!-- TODO: Implement tests -->
     <sonar.coverage.exclusions>**.*</sonar.coverage.exclusions>

@@ -41,6 +41,8 @@ along with semanticcms-view-all.  If not, see <https://www.gnu.org/licenses/>.
     <documented.artifactId>semanticcms-view-all</documented.artifactId>
     <documented.name>SemanticCMS View All</documented.name>
     <documented.description>SemanticCMS view of all content of the current page and all child pages.</documented.description>
+    <javadoc.breadcrumbs><![CDATA[<a target="${javadoc.target}" href="https://semanticcms.com/">SemanticCMS</a>
+/ <a target="${javadoc.target}" href="${project.url}">View All</a>]]></javadoc.breadcrumbs>
 
     <description.html><![CDATA[Documentation for <a target="${javadoc.target}" href="${project.url}">${documented.name}</a> in <a target="${javadoc.target}" href="https://semanticcms.com/">SemanticCMS</a> format.]]></description.html>
   </properties>

@@ -1,6 +1,6 @@
 /*
  * semanticcms-view-all - SemanticCMS view of all content of the current page and all child pages.
- * Copyright (C) 2016, 2017, 2020, 2021, 2022  AO Industries, Inc.
+ * Copyright (C) 2016, 2017, 2020, 2021, 2022, 2024  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -46,12 +46,10 @@ import javax.servlet.jsp.SkipPageException;
 
 /**
  * The view of all content of the current page and all child pages.
- * <p>
- * TODO: Authorship and copyright in view-all, or author specified per article, or author in article when doesn't match overall page?
- * </p>
- * <p>
- * TODO: Any use of description/keywords per article below?
- * </p>
+ *
+ * <p>TODO: Authorship and copyright in view-all, or author specified per article, or author in article when doesn't match overall page?</p>
+ *
+ * <p>TODO: Any use of description/keywords per article below?</p>
  */
 public final class AllView extends View {
 

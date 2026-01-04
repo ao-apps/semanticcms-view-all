@@ -118,9 +118,9 @@ along with semanticcms-view-all.  If not, see <https://www.gnu.org/licenses/>.
           <usedDependencies>
             <!-- JSP Only -->
             <dependency>com.aoapps:ao-taglib</dependency>
+            <dependency>jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api</dependency>
             <dependency>com.semanticcms:semanticcms-core-taglib</dependency>
             <dependency>com.semanticcms:semanticcms-core-view-content</dependency>
-            <dependency>org.apache.taglibs:taglibs-standard-spec</dependency>
           </usedDependencies>
           <ignoredDependencies>
             <!-- No "module-info.java" in some release builds -->
@@ -132,30 +132,6 @@ along with semanticcms-view-all.  If not, see <https://www.gnu.org/licenses/>.
   </build>
 
   <profiles>
-    <profile>
-      <id>audit-dependencies</id>
-      <activation>
-        <property><name>ossindex.skip</name><value>!true</value></property>
-      </activation>
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>org.sonatype.ossindex.maven</groupId><artifactId>ossindex-maven-plugin</artifactId>
-            <configuration>
-              <excludeVulnerabilityIds>
-                <!--
-                  Exclude sonatype-2020-0243: https://github.com/JodaOrg/joda-time-jsptags/pull/2
-                  This is already mitigated by our PGP verification of all downloaded artifacts.
-                  Plus, we always directly declare all transitive dependencies.
-                  TODO: Remove in joda-time:joda-time-jsptags > 1.1.1
-                -->
-                <exclude>sonatype-2020-0243</exclude>
-              </excludeVulnerabilityIds>
-            </configuration>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
     <profile>
       <id>offlineLinks</id><activation><file><exists>src/main/java</exists></file></activation>
       <build>
@@ -189,8 +165,9 @@ along with semanticcms-view-all.  If not, see <https://www.gnu.org/licenses/>.
                       <includes>element-list, package-list</includes>
                       <outputDirectory>${project.build.directory}/offlineLinks/com.aoapps/ao-web-resources-servlet</outputDirectory>
                     </artifactItem>
-                    <!-- ao-javadoc-offline: <groupId>javax.servlet</groupId><artifactId>javax.servlet-api</artifactId><classifier>javadoc</classifier> -->
-                    <!-- ao-javadoc-offline: <groupId>javax.servlet.jsp</groupId><artifactId>javax.servlet.jsp-api</artifactId><classifier>javadoc</classifier> -->
+                    <!-- ao-javadoc-offline: <groupId>jakarta.servlet</groupId><artifactId>jakarta.servlet-api</artifactId><classifier>javadoc</classifier> -->
+                    <!-- ao-javadoc-offline: <groupId>jakarta.servlet.jsp</groupId><artifactId>jakarta.servlet.jsp-api</artifactId><classifier>javadoc</classifier> -->
+                    <!-- JSP Only: <groupId>jakarta.servlet.jsp.jstl</groupId><artifactId>jakarta.servlet.jsp.jstl-api</artifactId><classifier>javadoc</classifier> -->
                     <artifactItem>
                       <groupId>com.semanticcms</groupId><artifactId>semanticcms-core-model</artifactId><classifier>javadoc</classifier>
                       <includes>element-list, package-list</includes>
@@ -203,7 +180,6 @@ along with semanticcms-view-all.  If not, see <https://www.gnu.org/licenses/>.
                     </artifactItem>
                     <!-- JSP Only: <groupId>com.semanticcms</groupId><artifactId>semanticcms-core-servlet</artifactId><classifier>javadoc</classifier> -->
                     <!-- JSP Only: <groupId>com.semanticcms</groupId><artifactId>semanticcms-core-view-content</artifactId><classifier>javadoc</classifier> -->
-                    <!-- JSP Only: <groupId>org.apache.taglibs</groupId><artifactId>taglibs-standard-spec</artifactId><classifier>javadoc</classifier> -->
                   </artifactItems>
                 </configuration>
               </execution>
@@ -231,8 +207,9 @@ along with semanticcms-view-all.  If not, see <https://www.gnu.org/licenses/>.
                   <url>https://oss.aoapps.com/web-resources/servlet/apidocs/</url>
                   <location>${project.build.directory}/offlineLinks/com.aoapps/ao-web-resources-servlet</location>
                 </offlineLink>
-                <!-- ao-javadoc-offline: <groupId>javax.servlet</groupId><artifactId>javax.servlet-api</artifactId><classifier>javadoc</classifier> -->
-                <!-- ao-javadoc-offline: <groupId>javax.servlet.jsp</groupId><artifactId>javax.servlet.jsp-api</artifactId><classifier>javadoc</classifier> -->
+                <!-- ao-javadoc-offline: <groupId>jakarta.servlet</groupId><artifactId>jakarta.servlet-api</artifactId><classifier>javadoc</classifier> -->
+                <!-- ao-javadoc-offline: <groupId>jakarta.servlet.jsp</groupId><artifactId>jakarta.servlet.jsp-api</artifactId><classifier>javadoc</classifier> -->
+                <!-- JSP Only: <groupId>jakarta.servlet.jsp.jstl</groupId><artifactId>jakarta.servlet.jsp.jstl-api</artifactId><classifier>javadoc</classifier> -->
                 <offlineLink>
                   <url>https://semanticcms.com/core/model/apidocs/</url>
                   <location>${project.build.directory}/offlineLinks/com.semanticcms/semanticcms-core-model</location>
@@ -243,7 +220,6 @@ along with semanticcms-view-all.  If not, see <https://www.gnu.org/licenses/>.
                 </offlineLink>
                 <!-- JSP Only: <groupId>com.semanticcms</groupId><artifactId>semanticcms-core-servlet</artifactId><classifier>javadoc</classifier> -->
                 <!-- JSP Only: <groupId>com.semanticcms</groupId><artifactId>semanticcms-core-view-content</artifactId><classifier>javadoc</classifier> -->
-                <!-- JSP Only: <groupId>org.apache.taglibs</groupId><artifactId>taglibs-standard-spec</artifactId><classifier>javadoc</classifier> -->
               </offlineLinks>
             </configuration>
           </plugin>
@@ -280,11 +256,7 @@ along with semanticcms-view-all.  If not, see <https://www.gnu.org/licenses/>.
                 <!--
                   Releases use "Automatic-Module-Name" instead of "module-info.java"
                   since has direct dependencies that are not yet modularized:
-                  javax.el-api-3.0.0.jar
-                  javax.servlet-api-3.1.0.jar
-                  javax.servlet.jsp-api-2.3.3.jar
-                  joda-time-jsptags-1.1.1.jar
-                  taglibs-standard-spec-1.2.5.jar
+                  java-time-jsptags-2.0.2.jar
                 -->
                 <Automatic-Module-Name>${module.name}</Automatic-Module-Name>
                 <Private-Package>!.</Private-Package>
@@ -322,8 +294,9 @@ along with semanticcms-view-all.  If not, see <https://www.gnu.org/licenses/>.
       <dependency>
         <groupId>com.aoapps</groupId><artifactId>ao-web-resources-servlet</artifactId><version>0.7.0-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
       </dependency>
-      <!-- javaee-web-api-bom: <groupId>javax.servlet</groupId><artifactId>javax.servlet-api</artifactId> -->
-      <!-- javaee-web-api-bom: <groupId>javax.servlet.jsp</groupId><artifactId>javax.servlet.jsp-api</artifactId> -->
+      <!-- jakartaee-web-profile-bom: <groupId>jakarta.servlet</groupId><artifactId>jakarta.servlet-api</artifactId> -->
+      <!-- jakartaee-web-profile-bom: <groupId>jakarta.servlet.jsp</groupId><artifactId>jakarta.servlet.jsp-api</artifactId> -->
+      <!-- jakartaee-web-profile-bom: <groupId>jakarta.servlet.jsp.jstl</groupId><artifactId>jakarta.servlet.jsp.jstl-api</artifactId> -->
       <dependency>
         <groupId>com.semanticcms</groupId><artifactId>semanticcms-core-model</artifactId><version>2.0.0-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
       </dependency>
@@ -336,7 +309,6 @@ along with semanticcms-view-all.  If not, see <https://www.gnu.org/licenses/>.
       <dependency>
         <groupId>com.semanticcms</groupId><artifactId>semanticcms-core-view-content</artifactId><version>2.0.0-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
       </dependency>
-      <!-- javaee-web-api-bom: <groupId>org.apache.taglibs</groupId><artifactId>taglibs-standard-spec</artifactId> -->
       <!-- Transitive -->
       <dependency>
         <groupId>com.aoapps</groupId><artifactId>ao-collections</artifactId><version>4.0.0-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
@@ -389,15 +361,15 @@ along with semanticcms-view-all.  If not, see <https://www.gnu.org/licenses/>.
       <dependency>
         <groupId>org.apache.commons</groupId><artifactId>commons-lang3</artifactId><version>3.20.0</version>
       </dependency>
-      <!-- javaee-web-api-bom: <groupId>javax.el</groupId><artifactId>javax.el-api</artifactId> -->
+      <!-- jakartaee-web-profile-bom: <groupId>jakarta.el</groupId><artifactId>jakarta.el-api</artifactId> -->
       <dependency>
-        <groupId>joda-time</groupId><artifactId>joda-time-jsptags</artifactId><version>1.1.1</version>
+        <groupId>net.sargue</groupId><artifactId>java-time-jsptags</artifactId><version>2.0.2</version>
       </dependency>
       <!-- Runtime Direct -->
-      <!-- javaee-web-api-bom: <groupId>org.apache.taglibs</groupId><artifactId>taglibs-standard-impl</artifactId> -->
+      <!-- jakartaee-web-profile-bom: <groupId>org.glassfish.web</groupId><artifactId>jakarta.servlet.jsp.jstl</artifactId> -->
       <!-- Imports -->
       <dependency>
-        <groupId>com.aoapps</groupId><artifactId>javaee-web-api-bom</artifactId><version>7.0.1-POST-SNAPSHOT</version>
+        <groupId>com.aoapps</groupId><artifactId>jakartaee-web-profile-bom</artifactId><version>10.0.0-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -422,10 +394,13 @@ along with semanticcms-view-all.  If not, see <https://www.gnu.org/licenses/>.
       <groupId>com.aoapps</groupId><artifactId>ao-web-resources-servlet</artifactId>
     </dependency>
     <dependency>
-      <groupId>javax.servlet</groupId><artifactId>javax.servlet-api</artifactId>
+      <groupId>jakarta.servlet</groupId><artifactId>jakarta.servlet-api</artifactId>
     </dependency>
     <dependency>
-      <groupId>javax.servlet.jsp</groupId><artifactId>javax.servlet.jsp-api</artifactId>
+      <groupId>jakarta.servlet.jsp</groupId><artifactId>jakarta.servlet.jsp-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>jakarta.servlet.jsp.jstl</groupId><artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
     </dependency>
     <dependency>
       <groupId>com.semanticcms</groupId><artifactId>semanticcms-core-model</artifactId>
@@ -439,12 +414,9 @@ along with semanticcms-view-all.  If not, see <https://www.gnu.org/licenses/>.
     <dependency>
       <groupId>com.semanticcms</groupId><artifactId>semanticcms-core-view-content</artifactId>
     </dependency>
-    <dependency>
-      <groupId>org.apache.taglibs</groupId><artifactId>taglibs-standard-spec</artifactId>
-    </dependency>
     <!-- Runtime Direct -->
     <dependency>
-      <groupId>org.apache.taglibs</groupId><artifactId>taglibs-standard-impl</artifactId>
+      <groupId>org.glassfish.web</groupId><artifactId>jakarta.servlet.jsp.jstl</artifactId>
       <scope>runtime</scope>
     </dependency>
   </dependencies>

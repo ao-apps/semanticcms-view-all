@@ -122,10 +122,6 @@ along with semanticcms-view-all.  If not, see <https://www.gnu.org/licenses/>.
             <dependency>com.semanticcms:semanticcms-core-taglib</dependency>
             <dependency>com.semanticcms:semanticcms-core-view-content</dependency>
           </usedDependencies>
-          <ignoredDependencies>
-            <!-- No "module-info.java" in some release builds -->
-            <dependency>com.aoapps:ao-collections</dependency>
-          </ignoredDependencies>
         </configuration>
       </plugin>
     </plugins>

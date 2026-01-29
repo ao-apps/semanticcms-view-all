@@ -66,7 +66,7 @@ public final class AllView extends View {
   private static final String JSPX_TARGET = "/semanticcms-view-all/view.inc.jspx";
 
   /**
-   * Registers the "{@link #NAME}" view in {@link RegistryEE} and {@link SemanticCMS}.
+   * Registers the "{@link AllView#NAME}" view in {@link RegistryEE} and {@link SemanticCMS}.
    */
   @WebListener("Registers the \"" + NAME + "\" view in RegistryEE and SemanticCMS.")
   public static class Initializer implements ServletContextListener {
